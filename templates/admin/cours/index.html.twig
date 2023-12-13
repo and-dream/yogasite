@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des cours{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+<h1>Liste des cours</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Stock</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cour in cours %}
+            <tr>
+                <td>{{ cour.id }}</td>
+                <td>{{ cour.name }}</td>
+                <td>{{ cour.description }}</td>
+                <td>{{ cour.stock }}</td>
+                <td>
+                    <a href="{{ path('app_cours_show', {'id': cour.id}) }}">afficher</a>
+                    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cours_new') }}">Créer un nouveau cours</a>
+</div>
+    
+{% endblock %}

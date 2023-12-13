@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container">
+		<a class="navbar-brand" href="/">
+			<img src={{asset('img/logo.png') }} alt="logo-holi-sens" width="33" height="33">
+		</a>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="/">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Notre studio</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_cours')}}">Yoga</a>
+				</li>
+				<li class="nav-item">
+					{# <a class="nav-link" href="{{ path('app_cours')}}">Méditation</a> #}
+				</li>
+				<li class="nav-item">
+					{# <a class="nav-link" href="{{ path('app_agenda')}}">Planning</a> #}
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_contact')}}">Contact</a>
+				</li>
+			</ul>
+		</div>
+    
+		<div class="d-flex justify-content-end">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			
+				{% if is_granted('ROLE_ADMIN') %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('admin_app_admin') }}">Back-Office</a>
+					</li>
+
+				{% endif %}
+
+				<form class="d-flex justify-content-end">
+					<a href="{{ path('app_agenda')}}">
+						<button class="btn btn-outline-info me-2" type="button">Réserver</button>
+					</a>
+				</form>
+
+				{% if app.user %}
+
+					{# <li class="nav-item"><a class="nav-link" href="#">Mon compte</a></li> #}
+
+					<li class="nav-item">
+						<a href="{{ path('app_logout') }}" class="btn btn-outline-primary">Déconnexion</a>
+					</li>
+				{% else %}
+					{# <li class="nav-item"><a href="{{ path('app_register') }}" class="btn btn-outline-dark me-3">Inscription</a></li> #}
+					<li class="nav-item">
+						<a href="{{ path('app_login') }}" class="btn btn-outline-secondary">Connexion</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav>
