@@ -1,21 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Holi Sens - Espace bien-être{% endblock %}
+{% block title %}Holi Sens - Espace bien-être
+{% endblock %}
 
 {% block body %}
-		{% include("partials/_carousel.html.twig") %}
+	{% include("partials/_carousel.html.twig") %}
+	<div class="container text-center mt-4 mb-4">
 
+		<h2>Explorez l'harmonie intérieure avec Holi Sens</h2>
+		<p>Cultivez la joie intérieure chez Holi Sens, votre refuge urbain pour la détente, la transformation et la connexion profonde.</p>
+	</div>
 
-	<div
-		class="container marketing mt-4">
+	<div class="container marketing mt-4">
+
+		
 
 		<!-- Trois colonnes de texte en dessous du carousel -->
 		<div class="row text-center">
 			<div class="col-lg-4">
 
 				<img src={{ asset ('img/site/yoga.png') }} class="img-thumbnail rounded-circle" alt="...">
-				<h2 class="fw-normal mt-2">Nos chambres</h2>
-				<p>Découvrez l'essence du raffinement et du confort à travers nos chambres et suites, où chaque détail évoque l'époque grandiose de l'impératrice Eugénie, offrant un voyage inoubliable dans l'histoire et le luxe de Paris.</p>
+				<h2 class="fw-normal mt-2">Le yoga</h2>
+				<p>Le yoga est une pratique ancestrale combinant postures physiques, techniques de respiration et méditation pour renforcer le corps et l'esprit, favorisant ainsi santé, flexibilité et sérénité.</p>
 				<p>
 					<a class="btn btn-secondary" href="#">Détails &raquo;</a>
 				</p>
@@ -23,18 +29,18 @@
 			<!-- /.col-lg-4 -->
 			<div class="col-lg-4">
 
-				<img src={{ asset ('img/site/meditation.png') }}  class="img-thumbnail rounded-circle" alt="...">
-				<h2 class="fw-normal mt-2">Le spa</h2>
-				<p>Notre spa somptueux est un sanctuaire de relaxation. Profitez de soins et de massages prodigués par des professionnels expérimentés, et plongez dans notre piscine chauffée pour une expérience revigorante.</p>
+				<img src={{ asset ('img/site/meditation.png') }} class="img-thumbnail rounded-circle" alt="...">
+				<h2 class="fw-normal mt-2">La méditation</h2>
+				<p>La méditation est une pratique de concentration et de pleine conscience, visant à apaiser l'esprit, réduire le stress et améliorer la clarté mentale et émotionnelle et la présence d'esprit.</p>
 				<p>
 					<a class="btn btn-secondary" href="#">Détails &raquo;</a>
 				</p>
 			</div>
 			<!-- /.col-lg-4 -->
 			<div class="col-lg-4">
-				<img src={{ asset ('img/site/retraite.png') }}  class="img-thumbnail rounded-circle" alt="...">
-				<h2 class="fw-normal mt-2">Le restaurant</h2>
-				<p>Découvrez un monde de saveurs au sein de notre restaurant étoilé. Notre chef talentueux vous invite à un voyage culinaire exquis, où chaque plat est une œuvre d'art gustative. Laissez-vous séduire par une cuisine qui célèbre les traditions françaises tout en innovant avec audace.</p>
+				<img src={{ asset ('img/site/retraite.png') }} class="img-thumbnail rounded-circle" alt="...">
+				<h2 class="fw-normal mt-2">Les retraites</h2>
+				<p>Les retraites de yoga et méditation offrent une échappée tranquille pour approfondir la pratique spirituelle, favoriser la relaxation et la connexion intérieure dans un environnement paisible.</p>
 				<p>
 					<a class="btn btn-secondary" href="#">Détails &raquo;</a>
 				</p>
@@ -44,7 +50,6 @@
 		<!-- /.row -->
 
 	</div>
-
 
 
 {% endblock %}

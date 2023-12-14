@@ -9,7 +9,7 @@
 					<a class="nav-link active" aria-current="page" href="/">Accueil</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Notre studio</a>
+					<a class="nav-link" href="{{ path('app_about')}}">Notre studio</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('app_cours')}}">Yoga</a>
@@ -28,7 +28,7 @@
     
 		<div class="d-flex justify-content-end">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-			
+
 				{% if is_granted('ROLE_ADMIN') %}
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('admin_app_admin') }}">Back-Office</a>
