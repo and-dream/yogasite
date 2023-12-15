@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter les séjours{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+    <h1>Ajouter un séjour</h1>
+    {% include "admin/retraite/_form.html.twig" %}
+    <a href="{{ path('app_retraite_index') }}">retour à la liste</a>
+    </div>
+
+{% endblock %}

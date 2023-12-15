@@ -1,8 +1,5 @@
 <div class="container">
-
-
 	{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-
 	<div class="col-md-6">{{form_row(form.name, {
     label: "Nom",
 })}}</div>
@@ -12,7 +9,6 @@
 	<div class="col-md-6">{{form_row(form.stock, {
     label: "Nombre de places",
 })}}</div>
-
 
 	<button class="btn">{{ button_label|default('Enregistrer') }}</button>
 	{{ form_end(form) }}

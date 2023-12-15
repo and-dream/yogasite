@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des séjours{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+<h1>Liste des séjours</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Destination</th>
+                <th>Duree</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for retrait in retraite %}
+            <tr>
+                <td>{{ retrait.id }}</td>
+                <td>{{ retrait.name }}</td>
+                <td>{{ retrait.Destination }}</td>
+                <td>{{ retrait.Duree }}</td>
+                <td>{{ retrait.description }}</td>
+                <td>{{ retrait.price }}</td>
+                <td>{{ retrait.stock }}</td>
+                <td><img src="{{ asset('img/upload/' ~ retrait.image) }}" alt="" width="10 0"></td>
+
+                <td>
+                    <a href="{{ path('app_retraite_show', {'id': retrait.id}) }}">afficher</a>
+                    <a href="{{ path('app_retraite_edit', {'id': retrait.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('ajouter') }}">Créer un nouveau séjour</a>
+</div>
+    
+{% endblock %}

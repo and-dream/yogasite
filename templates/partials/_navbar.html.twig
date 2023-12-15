@@ -1,5 +1,10 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container">
+		<nav class="navbar bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/">Holi Sens</a>
+			</div>
+		</nav>
 		<a class="navbar-brand" href="/">
 			<img src={{asset('img/logo.png') }} alt="logo-holi-sens" width="33" height="33">
 		</a>
@@ -15,23 +20,26 @@
 					<a class="nav-link" href="{{ path('app_cours')}}">Yoga</a>
 				</li>
 				<li class="nav-item">
-					{# <a class="nav-link" href="{{ path('app_cours')}}">Méditation</a> #}
+					<a class="nav-link" href="{{ path('app_meditation')}}">Méditation</a>
 				</li>
 				<li class="nav-item">
-					{# <a class="nav-link" href="{{ path('app_agenda')}}">Planning</a> #}
+					<a class="nav-link" href="{{ path('app_retraites')}}">Retraites</a>
+				</li>
+				<li
+					class="nav-item">{# <a class="nav-link" href="{{ path('app_agenda')}}">Planning</a> #}
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('app_contact')}}">Contact</a>
 				</li>
 			</ul>
 		</div>
-    
+
 		<div class="d-flex justify-content-end">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 				{% if is_granted('ROLE_ADMIN') %}
 					<li class="nav-item">
-						<a class="nav-link" href="{{ path('admin_app_admin') }}">Back-Office</a>
+						<a class="nav-link" href="{{ path('app_admin') }}">Back-Office</a>
 					</li>
 
 				{% endif %}

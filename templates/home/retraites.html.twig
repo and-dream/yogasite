@@ -4,9 +4,82 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container mt-4">
+	<div class="container mt-4 mb-4 text-center">
 		<h1>Découvrir nos prochaines retraites</h1>
 	</div>
+
+	{# {% for retrait in retraite %}
+	
+			<div class="container text-center px-4">
+				<div class="card mb-3">
+					<h3 class="card-header">{{ retrait.name }}</h3>
+					<img class="img-fluid d-block mx-auto mt-3" src="{{ asset('img/upload/' ~ retrait.image) }}" alt="" width="250">
+					<div class="card-body">
+						<h5 class="card-title">{{ retrait.Duree }}
+							|
+							{{ retrait.Destination }}</h5>
+					</div>
+					<div class="card-body">
+						<p class="card-text">{{ retrait.description }}</p>
+					</div>
+					<div class="card-body">
+	
+	
+						{% if app.user %}
+							<a href="{{ path('retraite_resa', {id: retrait.id} ) }}" class="card-link">Découvrir</a>
+						{% else %}
+							<h6 class="card-subtitle text-muted">Vous devez être connecté pour pouvoir réserver</h6>
+							<div col="6">
+								<a href="{{ path('app_login') }}" class="card-link">Me connecter</a>
+								<a href="{{ path('app_register') }}" class="card-link">M'inscrire</a>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endfor %} #}
+
+	{% for retrait in retraite %}
+
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-8 ">
+					<div class="card mb-3">
+						<h3 class="card-header">{{ retrait.name }}</h3>
+						<div class="card-body">
+							<h5 class="card-title">{{ retrait.Destination }}</h5>
+							<h6 class="card-subtitle text-muted">{{ retrait.Duree }}</h6>
+						</div>
+
+						<div class="card-body">
+							<p class="card-text">{{ retrait.description }}</p>
+						</div>
+						
+							<div class="card-footer text-muted">
+							{{ retrait.stock }}  places disponibles
+						</div>
+
+						{% if app.user %}
+							<a href="{{ path('retraite_resa', {id: retrait.id} ) }}" class="card-link text-center mt-2 mb-1">Découvrir</a>
+						{% else %}
+							<h6 class="card-subtitle text-muted">Vous devez être connecté pour pouvoir réserver</h6>
+							<div col="6">
+								<a href="{{ path('app_login') }}" class="card-link">Me connecter</a>
+								<a href="{{ path('app_register') }}" class="card-link">M'inscrire</a>
+							</div>
+						{% endif %}
+
+
+					
+					</div>
+
+
+				</div>
+			</div>
+
+
+		</div>
+	{% endfor %}
 
 
 {% endblock %}

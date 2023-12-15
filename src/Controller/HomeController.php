@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Form\ContactType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\CommandeType;
+use App\Repository\RetraiteRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -28,11 +32,47 @@ class HomeController extends AbstractController
         return $this->render('home/cours.html.twig');
     }
 
+    #[Route('/meditation', name: 'app_meditation')]
+    public function meditation(): Response
+    {    
+        return $this->render('home/meditation.html.twig');
+    }
+
 
     #[Route('/retraites', name: 'app_retraites')]
-    public function retraites(): Response
+    public function retraites(RetraiteRepository $repo): Response
     {
-        return $this->render('home/retraites.html.twig');
+        
+        return $this->render('home/retraites.html.twig', [
+            'retraite' => $repo->findAll(),
+        ]);
+    }
+
+    #[Route('/retraite/resa/{id}', name:"retraite_resa")]
+    public function resa($id, RetraiteRepository $repo, Request $rq, EntityManagerInterface $manager)
+    {
+      $retraite = $repo->find($id);
+      $order = new Commande;
+      $formOrder =$this->createForm(CommandeType::class, $order);
+      $formOrder->handleRequest($rq);
+      
+      if($formOrder->isSubmitted() && $formOrder->isValid())
+         {   
+             $order
+             ->setMembre($this->getUser())
+            ->setRetraite($retraite);
+
+            $manager->persist($order);
+            $manager->flush();
+
+          return $this->redirectToRoute('retraite_resa');
+        }
+      
+            return $this->render('retraite/resa.html.twig', [
+                'retraite' => $retraite,
+                'formOrder' => $formOrder,
+            ]);
+
     }
 
     // Pour plus tard lorsque Holi Sens voudra lancer son e-shop
