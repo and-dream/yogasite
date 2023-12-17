@@ -40,17 +40,10 @@ class Membre implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100)]
     private ?string $phone = null;
 
-    #[ORM\OneToMany(mappedBy: 'usersref', targetEntity: Reservations::class)]
-    private Collection $reservations;
 
     #[ORM\OneToMany(mappedBy: 'membre', targetEntity: Commande::class)]
     private Collection $commandes;
 
-    public function __construct()
-    {
-        $this->reservations = new ArrayCollection();
-        $this->commandes = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -154,36 +147,6 @@ class Membre implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhone(string $phone): static
     {
         $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Reservations>
-     */
-    public function getReservations(): Collection
-    {
-        return $this->reservations;
-    }
-
-    public function addReservation(Reservations $reservation): static
-    {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations->add($reservation);
-            $reservation->setUsersref($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservation(Reservations $reservation): static
-    {
-        if ($this->reservations->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
-            if ($reservation->getUsersref() === $this) {
-                $reservation->setUsersref(null);
-            }
-        }
 
         return $this;
     }

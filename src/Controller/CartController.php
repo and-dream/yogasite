@@ -56,7 +56,7 @@ class CartController extends AbstractController
             $panier[$id]++;
         }
         
-        //je passe ma variable dans la session
+        //je passe ma variable dans la session (sauvegarde dans la session)
         $session->set('panier', $panier);
         
         //on redirige vers la page du panier
@@ -66,7 +66,7 @@ class CartController extends AbstractController
     #[Route('/remove/{id}', name: 'remove')]
     public function remove(Retraite $retraite, SessionInterface $session)
     {
-        
+        // je récupère le panier actuel
         $id = $retraite->getId();
         $panier = $session->get('panier', []);
 

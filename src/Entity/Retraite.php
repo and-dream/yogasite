@@ -40,9 +40,13 @@ class Retraite
     #[ORM\OneToMany(mappedBy: 'retraite', targetEntity: Commande::class)]
     private Collection $commandes;
 
+    #[ORM\OneToMany(mappedBy: 'products', targetEntity: CommandeDetails::class)]
+    private Collection $commandeDetails;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+        $this->commandeDetails = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -142,22 +146,30 @@ class Retraite
         return $this->commandes;
     }
 
-    public function addCommande(Commande $commande): static
+    /**
+     * @return Collection<int, CommandeDetails>
+     */
+    public function getCommandeDetails(): Collection
     {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes->add($commande);
-            $commande->setRetraite($this);
+        return $this->commandeDetails;
+    }
+
+    public function addCommandeDetail(CommandeDetails $commandeDetail): static
+    {
+        if (!$this->commandeDetails->contains($commandeDetail)) {
+            $this->commandeDetails->add($commandeDetail);
+            $commandeDetail->setProducts($this);
         }
 
         return $this;
     }
 
-    public function removeCommande(Commande $commande): static
+    public function removeCommandeDetail(CommandeDetails $commandeDetail): static
     {
-        if ($this->commandes->removeElement($commande)) {
+        if ($this->commandeDetails->removeElement($commandeDetail)) {
             // set the owning side to null (unless already changed)
-            if ($commande->getRetraite() === $this) {
-                $commande->setRetraite(null);
+            if ($commandeDetail->getProducts() === $this) {
+                $commandeDetail->setProducts(null);
             }
         }
 

@@ -25,13 +25,6 @@ class Cours
     #[ORM\Column]
     private ?int $stock = null;
 
-    #[ORM\OneToMany(mappedBy: 'coursref', targetEntity: Reservations::class)]
-    private Collection $reservations;
-
-    public function __construct()
-    {
-        $this->reservations = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -74,33 +67,4 @@ class Cours
         return $this;
     }
 
-    /**
-     * @return Collection<int, Reservations>
-     */
-    public function getReservations(): Collection
-    {
-        return $this->reservations;
-    }
-
-    public function addReservation(Reservations $reservation): static
-    {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations->add($reservation);
-            $reservation->setCoursref($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservation(Reservations $reservation): static
-    {
-        if ($this->reservations->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
-            if ($reservation->getCoursref() === $this) {
-                $reservation->setCoursref(null);
-            }
-        }
-
-        return $this;
-    }
 }

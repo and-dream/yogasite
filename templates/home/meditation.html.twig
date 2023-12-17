@@ -1,16 +1,100 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Nos cours{% endblock %}
+{% block title %}Cours de méditation
+{% endblock %}
 
 {% block body %}
 
-<div class="container mt-4">
-<h1 class="text-center">Nos séances de méditation</h1>
-<p>La méditation, une pratique ancestrale centrée sur la pleine conscience et la concentration, offre de profonds bienfaits pour la santé mentale et physique. En focalisant l'attention sur le moment présent, souvent à travers la respiration ou un mantra, elle aide à réduire le stress, l'anxiété et favorise une relaxation profonde. Cette pratique régulière améliore la clarté mentale, la prise de décision, et renforce la résilience émotionnelle. Elle est également liée à une meilleure qualité de sommeil, à une diminution de la pression artérielle et à une augmentation de la satisfaction générale de la vie. Accessible à tous, la méditation peut être intégrée facilement dans la routine quotidienne, offrant un refuge tranquille dans le tumulte de la vie moderne.</p>
-<div class="container">
-{% include "partials/_meditation.html.twig" %}
+	<div class="container mt-4">
+		<h1 class="text-center">Nos séances de méditation</h1>
+		<p>La méditation, une pratique ancestrale centrée sur la pleine conscience et la concentration, offre de profonds bienfaits pour la santé mentale et physique. En focalisant l'attention sur le moment présent, souvent à travers la respiration ou un mantra, elle aide à réduire le stress, l'anxiété et favorise une relaxation profonde. Cette pratique régulière améliore la clarté mentale, la prise de décision, et renforce la résilience émotionnelle. Elle est également liée à une meilleure qualité de sommeil, à une diminution de la pression artérielle et à une augmentation de la satisfaction générale de la vie. Accessible à tous, la méditation peut être intégrée facilement dans la routine quotidienne, offrant un refuge tranquille dans le tumulte de la vie moderne.</p>
+	</div>
 
-</div>
-</div>
+	<main>
+
+		<div class="album py-5 bg-body-tertiary">
+			<div class="container">
+
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2 d-flex justify-content-center">
+
+					<div class="col">
+						<div class="card shadow-sm">
+							<div class="card-header">Méditation de Pleine Conscience (Mindfulness)</div>
+							<img src={{asset('img/mindfulness.png') }} class="rounded-circle p-4" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false" alt="pleine conscience">
+							<div class="card-body">
+								<p class="card-text">Réduction du stress et de l'anxiété. Amélioration de la concentration et de la clarté mentale. Développement de la conscience du moment présent.</p>
+								<small class="text-body-secondary">Accessible à tous</small>
+								<div class="d-flex justify-content-between align-items-center mt-2">
+									<div>
+										<a class="btn btn-outline-dark mb-4" href="{{ path('app_agenda')}}">
+											Réserver &raquo;</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col">
+						<div class="card shadow-sm">
+							<div class="card-header">Méditation Transcendantale</div>
+							<img src={{asset('img/transcendentale.png') }} alt="logo-holi-sens" class="rounded-circle p-4" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false" alt="pleine conscience">
+							<div class="card-body">
+								<p class="card-text">Réduction du stress et de la tension corporelle. Amélioration de la qualité du sommeil. Développement de la créativité et de la clarté mentale.</p>
+								<small class="text-body-secondary">Accessible à tous</small>
+								<div class="d-flex justify-content-between align-items-center mt-2">
+									<div>
+										<a class="btn btn-outline-dark mb-4" href="{{ path('app_agenda')}}">
+											Réserver &raquo;</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-4 d-flex justify-content-center">
+
+
+					<div class="col">
+						<div class="card shadow-sm">
+							<div class="card-header">Méditation Guidée</div>
+							<img src={{asset('img/guidee.png') }} alt="logo-holi-sens" class="rounded-circle p-4" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false" alt="pleine conscience">
+							<div class="card-body">
+								<p class="card-text">Induction de la relaxation profonde. Exploration de thèmes spécifiques (confiance, gratitude, etc.). Amélioration de la visualisation créative.</p>
+								<small class="text-body-secondary">Accessible à tous</small>
+								<div class="d-flex justify-content-between align-items-center mt-2">
+									<div>
+										<a class="btn btn-outline-dark mb-4" href="{{ path('app_agenda')}}">
+											Réserver &raquo;</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col">
+						<div class="card shadow-sm">
+							<div class="card-header">Méditation Chakra</div>
+							<img src={{asset('img/chakra.png') }} alt="logo-holi-sens" class="rounded-circle p-4" aria-label="Placeholder: Thumbnail" preserveaspectratio="xMidYMid slice" focusable="false" alt="pleine conscience">
+							<div class="card-body">
+								<p class="card-text">Équilibrage des centres d'énergie du corps. Harmonisation du système énergétique. Favorisation de la clarté mentale et du bien-être.</p>
+								<small class="text-body-secondary">Accessible à tous</small>
+								<div class="d-flex justify-content-between align-items-center mt-2">
+									<div>
+										<a class="btn btn-outline-dark mb-4" href="{{ path('app_agenda')}}">
+											Réserver &raquo;</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</main>
 
 {% endblock %}
