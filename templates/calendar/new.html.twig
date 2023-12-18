@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau rdv{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Créer une nouvelle entrée de calendrier</h1>
+
+    {{ include('calendar/_form.html.twig') }}
+
+    <a href="{{ path('app_calendar_index') }}">retour à la liste</a>
+</div>
+
+{% endblock %}

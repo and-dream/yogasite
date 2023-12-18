@@ -28,13 +28,13 @@ class HomeController extends AbstractController
 
     #[Route('/cours', name: 'app_cours')]
     public function cours(): Response
-    {    
+    {
         return $this->render('home/cours.html.twig');
     }
 
     #[Route('/meditation', name: 'app_meditation')]
     public function meditation(): Response
-    {    
+    {
         return $this->render('home/meditation.html.twig');
     }
 
@@ -42,38 +42,12 @@ class HomeController extends AbstractController
     #[Route('/retraites', name: 'app_retraites')]
     public function retraites(RetraiteRepository $repo): Response
     {
-        
+
         return $this->render('home/retraites.html.twig', [
             'retraite' => $repo->findAll(),
         ]);
     }
 
-    #[Route('/retraite/resa/{id}', name:"retraite_resa")]
-    public function resa($id, RetraiteRepository $repo, Request $rq, EntityManagerInterface $manager)
-    {
-      $retraite = $repo->find($id);
-      $order = new Commande;
-      $formOrder =$this->createForm(CommandeType::class, $order);
-      $formOrder->handleRequest($rq);
-      
-      if($formOrder->isSubmitted() && $formOrder->isValid())
-         {   
-             $order
-             ->setMembre($this->getUser())
-            ->setRetraite($retraite);
-
-            $manager->persist($order);
-            $manager->flush();
-
-          return $this->redirectToRoute('retraite_resa');
-        }
-      
-            return $this->render('retraite/resa.html.twig', [
-                'retraite' => $retraite,
-                'formOrder' => $formOrder,
-            ]);
-
-    }
 
     // Pour plus tard lorsque Holi Sens voudra lancer son e-shop
     #[Route('/boutique', name: 'app_shop')]
@@ -82,26 +56,30 @@ class HomeController extends AbstractController
         return $this->render('home/boutique.html.twig');
     }
 
+    #[Route('/formules', name: 'app_formules')]
+    public function formules(): Response
+    {
+        return $this->render('home/formules.html.twig');
+    }
+
     #[Route('/mentions-legales', name: 'app_mentions')]
     public function mentions(): Response
     {
         return $this->render('home/mentions.html.twig');
     }
 
-    #[Route('//cgv', name:'app_cgv')]
+    #[Route('//cgv', name: 'app_cgv')]
     public function cgv(): Response
     {
         return $this->render('home/cgv.html.twig');
     }
 
-    #[Route('/contact', name:'app_contact')]
+    #[Route('/contact', name: 'app_contact')]
     public function contact(Request $request): Response
     {
-       $form = $this->createForm(ContactType::class);
+        $form = $this->createForm(ContactType::class);
         return $this->render('home/contact.html.twig', [
             'formContact' => $form
         ]);
     }
-
-
 }

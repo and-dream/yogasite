@@ -1,16 +1,17 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Cours de yoga{% endblock %}
+{% block title %}Cours de yoga
+{% endblock %}
 
 {% block body %}
 
-<div class="container mt-4">
-<h1 class="text-center">Nos cours de yoga</h1>
-<p>La pratique du yoga, une discipline millénaire originaire de l'Inde, offre une multitude de bienfaits tant pour le corps que pour l'esprit. Elle se caractérise par une série de postures physiques (asanas), de techniques de respiration (pranayama), et de méditation, visant à harmoniser le corps et l'esprit. Sur le plan physique, le yoga améliore la flexibilité, la force, l'équilibre et l'endurance. En exécutant les asanas, on travaille sur les différents groupes musculaires, favorisant ainsi une meilleure posture et un soulagement des tensions corporelles. Les techniques de respiration et la méditation contribuent à réduire le stress et l'anxiété, améliorant la santé mentale et émotionnelle. De plus, le yoga aide à cultiver la conscience de soi, la patience et la tranquillité intérieure, des qualités bénéfiques dans la vie quotidienne. Cette pratique holistique est accessible à tous, indépendamment de l'âge ou de la condition physique, et peut être adaptée pour répondre aux besoins spécifiques de chacun, rendant le yoga une discipline à la fois inclusive et personnalisable.</p>
-<div class="container">
-{% include "partials/_cours.html.twig" %}
+	<div class="container mt-4">
+		<h1 class="text-center">Nos cours de yoga</h1>
+		<p>La pratique du yoga, une discipline millénaire originaire de l'Inde, offre une multitude de bienfaits tant pour le corps que pour l'esprit. Elle se caractérise par une série de postures physiques (asanas), de techniques de respiration (pranayama), et de méditation, visant à harmoniser le corps et l'esprit. Sur le plan physique, le yoga améliore la flexibilité, la force, l'équilibre et l'endurance. En exécutant les asanas, on travaille sur les différents groupes musculaires, favorisant ainsi une meilleure posture et un soulagement des tensions corporelles. Les techniques de respiration et la méditation contribuent à réduire le stress et l'anxiété, améliorant la santé mentale et émotionnelle. De plus, le yoga aide à cultiver la conscience de soi, la patience et la tranquillité intérieure, des qualités bénéfiques dans la vie quotidienne. Cette pratique holistique est accessible à tous, indépendamment de l'âge ou de la condition physique, et peut être adaptée pour répondre aux besoins spécifiques de chacun, rendant le yoga une discipline à la fois inclusive et personnalisable.</p>
+		<div class="container">
+			{% include "partials/_cours.html.twig" %}
 
-</div>
-</div>
+		</div>
+	</div>
 
 {% endblock %}

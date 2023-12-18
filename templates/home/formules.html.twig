@@ -1,0 +1,165 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Formules d'abonnement
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+
+		<h1 class="text-center mb-4">
+			Choisissez la formule d'abonnement adapatée à votre rythme
+		</h1>
+
+		<div style="height: 50px;"></div>
+		<!-- Espace vertical de 50px -->
+
+		<div class="row mb-6">
+			<div class="col-6">
+				<p class="d-flex align-items-center ">La formule Découverte est idéale pour les débutants ou ceux qui souhaitent intégrer doucement le yoga et la méditation dans leur routine
+				</p><br>
+				<p>La formule Équilibre est parfaite pour ceux qui pratiquent régulièrement et cherchent à approfondir leur expérience</p><br>
+				<p>La formule Intégrale est idéale pour ceux qui s'engagent pleinement dans leur parcours de bien-être et cherchent un accompagnement personnalisé</p>
+			</div>
+			<div class="col-5">
+				<img src={{ asset ('img/site/formule.jpg') }} width="350" alt="femme assise en train de méditer">
+
+
+			</div>
+
+		</div>
+		<div style="height: 50px;"></div>
+		<!-- Espace vertical de 50px -->
+		<main>
+			<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+				<div class="col">
+					<div class="card mb-4 rounded-3 shadow-sm">
+						<div class="card-header py-3">
+							<h4 class="my-0 fw-normal">Formule Découverte</h4>
+						</div>
+						<div class="card-body">
+							<h1 class="card-title pricing-card-title">45 €<small class="text-body-secondary fw-light">/mois</small>
+							</h1>
+							<ul class="list-unstyled mt-3 mb-4">
+								<li>Accès à 4 cours par mois
+								</li>
+								<li>(yoga ou méditation, au choix)</li>
+								<li>10% de réduction sur les ateliers et événements spéciaux</li>
+								<li>Flexibilité dans le choix des cours</li>
+							</ul>
+							<button type="button" class="w-100 btn btn-lg btn-outline-primary">Choisir</button>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card mb-4 rounded-3 shadow-sm">
+						<div class="card-header py-3">
+							<h4 class="my-0 fw-normal">Formule Équilibre</h4>
+						</div>
+						<div class="card-body">
+							<h1 class="card-title pricing-card-title">70 €<small class="text-body-secondary fw-light">/mois</small>
+							</h1>
+							<ul class="list-unstyled mt-3 mb-4">
+
+								<li>Accès illimité aux cours réguliers de yoga et de méditation</li>
+								<li>15% de réduction sur les ateliers et événements spéciaux</li>
+								<li>
+									1 atelier bien-être gratuit par trimestre</li>
+								<li>Accès prioritaire aux retraites organisées par Holi Sens</li>
+
+							</ul>
+							<button type="button" class="w-100 btn btn-lg btn-primary">Choisir</button>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card mb-4 rounded-3 shadow-sm border-primary">
+						<div class="card-header py-3 text-bg-primary border-primary">
+							<h4 class="my-0 fw-normal">Formule Intégrale</h4>
+						</div>
+						<div class="card-body">
+							<h1 class="card-title pricing-card-title">90 €<small class="text-body-secondary fw-light">/mois</small>
+							</h1>
+							<ul class="list-unstyled mt-3 mb-4">
+								<li>Accès illimité à tous les cours, ateliers et séances spéciales</li>
+								<li>20% de réduction sur les retraites</li>
+								<li>1 session de coaching individuel par mois</li>
+								<li>Accès exclusif à des événements réservés aux membres "Intégrale"</li>
+							</ul>
+							<button type="button" class="w-100 btn btn-lg btn-primary">Choisir</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<h2 class="display-6 text-center mb-4">Comparer les fomules</h2>
+
+			<div class="table-responsive">
+				<table class="table text-center">
+					<thead>
+						<tr>
+							<th style="width: 34%;"></th>
+							<th style="width: 22%;">Free</th>
+							<th style="width: 22%;">Pro</th>
+							<th style="width: 22%;">Enterprise</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row" class="text-start">Location tapis de yoga inclus</th>
+							<td></td>
+							<td>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewbox="0 0 16 16">
+									<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+								</svg>
+							</td>
+							<td>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewbox="0 0 16 16">
+									<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+								</svg>
+							</td>
+						</tr>
+					</tbody>
+				</svg>
+			</td>
+
+		</tr>
+		<tr>
+			<th scope="row" class="text-start">Coaching personnalisé</th>
+			<td></td>
+			<td></td>
+			<td>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewbox="0 0 16 16">
+					<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+				</svg>
+			</td>
+		</tr>
+	</tbody>
+
+	<tbody>
+		<tr>
+			<th scope="row" class="text-start">Cours illimités</th>
+			<td></td>
+			<td>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewbox="0 0 16 16">
+					<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+				</svg>
+			</td>
+			<td>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewbox="0 0 16 16">
+					<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+				</svg>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row" class="text-start">Remise sur les retraites</th>
+			<td></td>
+			<td></td>
+			<td>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewbox="0 0 16 16">
+					<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+				</svg>
+			</td>
+		</tr>
+
+	</tbody>
+</table></div></main></div>{% endblock %}

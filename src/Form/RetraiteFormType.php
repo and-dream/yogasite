@@ -14,10 +14,10 @@ class RetraiteFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', options:[
+            ->add('name', options: [
                 'label' => 'Nom'
             ])
-            ->add('description', options:[
+            ->add('description', options: [
                 'label' => 'Description'
             ])
             ->add('image', FileType::class, [
@@ -35,19 +35,18 @@ class RetraiteFormType extends AbstractType
                         ],
                         'mimeTypesMessage' => 'Veuillez télécharger une image au bon format',
                     ])
-                    ],
+                ],
             ])
-            ->add('price', options:[
+            ->add('price', options: [
                 'label' => 'Prix'
             ])
-            ->add('stock', options:[
+            ->add('stock', options: [
                 'label' => 'Places disponibles'
             ])
-            ->add('Duree', options:[
+            ->add('Duree', options: [
                 'label' => 'Durée'
             ])
-            ->add('Destination')
-        ;
+            ->add('Destination');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

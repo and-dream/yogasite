@@ -14,8 +14,7 @@ class Cours1Type extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('stock')
-        ;
+            ->add('stock');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

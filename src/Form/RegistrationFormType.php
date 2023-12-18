@@ -24,7 +24,7 @@ class RegistrationFormType extends AbstractType
             ->add('lastname')
             ->add('phone')
             ->add('agreeTerms', CheckboxType::class, [
-                                'mapped' => false,
+                'mapped' => false,
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',
@@ -58,8 +58,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Votre mot de passe doit contenir au moins un chiffre, un caractère spécial (@$!%#*?&), une lettre en minuscule, une lettre en majuscule'
                     ))
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

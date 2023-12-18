@@ -16,16 +16,15 @@ class CommandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-//             ->add('membre', EntityType::class, [
-//                 'class' => Membre::class,
-// 'choice_label' => 'id',
-//             ])
-//             ->add('retraite', EntityType::class, [
-//                 'class' => Retraite::class,
-// 'choice_label' => 'id',
-//             ])
-            ->add('valider', SubmitType::class)
-        ;
+            //             ->add('membre', EntityType::class, [
+            //                 'class' => Membre::class,
+            // 'choice_label' => 'id',
+            //             ])
+            //             ->add('retraite', EntityType::class, [
+            //                 'class' => Retraite::class,
+            // 'choice_label' => 'id',
+            //             ])
+            ->add('valider', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

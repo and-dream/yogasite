@@ -27,7 +27,7 @@ class AdminController extends AbstractController
 
     // GESTION DES RETRAITES
 
-    #[Route('/retraitesliste', name: 'app_retraite_index', methods:['GET'])]
+    #[Route('/retraitesliste', name: 'app_retraite_index', methods: ['GET'])]
     public function retraite(RetraiteRepository $retraiteRepository): Response
     {
         return $this->render('admin/retraite/index.html.twig', [
@@ -35,7 +35,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/newretraite', name:'ajouter')]
+    #[Route('/newretraite', name: 'ajouter')]
     public function addRetraite(Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
     {
         // creation nouveau sejour
@@ -49,38 +49,37 @@ class AdminController extends AbstractController
 
         // verification formulaire soumis et valide
 
-        if($formRetraite->isSubmitted() && $formRetraite->isValid())
-        {
+        if ($formRetraite->isSubmitted() && $formRetraite->isValid()) {
+            // dd($formRetraite['image']->getData());
             // !traitement image
 
             $imageFile = $formRetraite->get('image')->getData();
 
-            if($imageFile){
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(),PATHINFO_FILENAME); 
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
 
-                    try{
-                        $imageFile->move(
-                            $this->getParameter('img_upload'), 
-                            $newFilename
-                        );
-                    }catch (FileException $e){
-
-                    }
-                    $retrait->setImage($newFilename);
-            } 
+                try {
+                    $imageFile->move(
+                        $this->getParameter('img_upload'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                }
+                $retrait->setImage($newFilename);
+            }
 
             // !fin traitement image
-            
-            
+
+
             // requête préparée
             $manager->persist($retrait);
             $manager->flush();
 
             return $this->redirectToRoute('app_retraite_index');
         }
-        
+
         return $this->render('admin/retraite/ajouter.html.twig', [
             'formRetraite' => $formRetraite,
         ]);
@@ -117,12 +116,11 @@ class AdminController extends AbstractController
     #[Route('/{id}/r', name: 'app_retraite_delete', methods: ['POST'])]
     public function delete(Request $request, Retraite $retrait, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$retrait->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $retrait->getId(), $request->request->get('_token'))) {
             $entityManager->remove($retrait);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('app_retraite_index', [], Response::HTTP_SEE_OTHER);
     }
-
 }

@@ -12,22 +12,21 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom', options:[
+            ->add('nom', options: [
                 'label' => 'Nom'
             ])
-            ->add('prenom', options:[
+            ->add('prenom', options: [
                 'label' => 'Prénom'
             ])
-            ->add('email', options:[
+            ->add('email', options: [
                 'label' => 'Email'
             ])
-            ->add('telephone', options:[
+            ->add('telephone', options: [
                 'label' => 'Téléphone'
             ])
-            ->add('message', options:[
+            ->add('message', options: [
                 'label' => 'Votre message'
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

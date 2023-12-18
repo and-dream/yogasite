@@ -17,8 +17,7 @@ class MembreType extends AbstractType
             ->add('password')
             ->add('lastname')
             ->add('firstname')
-            ->add('phone')
-        ;
+            ->add('phone');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

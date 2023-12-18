@@ -3,10 +3,38 @@
 {% block title %}Planinng cours{% endblock %}
 
 
+
 {% block body %}
+{# {{dump(data)}} #}
 <div class="container mt-4">
 <h1>Le planning des cours</h1>
 </div>
-<div id='calendar'></div>
+<div id="calendar"></div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    window.onload = () => {
+        let calendarElt = document.querySelector("#calendar")
+
+        let calendar = new FullCalendar.Calendar(calendarElt, {
+            initialView: 'timeGridWeek',
+            locale: 'fr',
+            timeZone: 'Europe/Paris',
+            headerToolbar: {
+                start: 'prev,next today',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek'
+            },
+            events: {{ data|raw }}
+        })
+
+        calendar.render()
+    }
+</script>
+
 
 {% endblock %}
+
+
+

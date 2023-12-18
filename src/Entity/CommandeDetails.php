@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CommandeDetailsRepository::class)]
 class CommandeDetails
 {
- 
+
     #[ORM\Column]
     private ?int $quantity = null;
 
@@ -18,7 +18,7 @@ class CommandeDetails
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'commandeDetails')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Commande $commandes = null;  
+    private ?Commande $commandes = null;
 
     #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'commandeDetails')]

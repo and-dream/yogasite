@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accéder au paiement
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<h1>Paiement</h1>
+
+		<form action="/checkout" method="POST">
+			<button type="submit" class="btn btn-primary btn-lg">Paiement</button>
+		</form>
+
+	</div>
+{% endblock %}

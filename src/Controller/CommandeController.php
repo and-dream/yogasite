@@ -23,8 +23,8 @@ class CommandeController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_USER');
 
         $panier = $session->get('panier', []);
-        
-        if($panier === []){
+
+        if ($panier === []) {
             $this->addFlash('message', 'Votre panier est vide');
             return $this->redirectToRoute('app_homepage');
         }
@@ -39,12 +39,12 @@ class CommandeController extends AbstractController
         $order->setReference(uniqid()); //pour avoir un exemple
 
         //on parcourt le panier (boucle)
-        foreach($panier as $item => $quantity){
+        foreach ($panier as $item => $quantity) {
             $orderDetails = new CommandeDetails;
 
             //on va récupérer le produit
             $product = $retraiteRepository->find($item);
-            
+
             $price = $product->getPrice();
 
             //création détail de la commande
@@ -60,9 +60,8 @@ class CommandeController extends AbstractController
         $manager->flush();
 
         $session->remove('panier');
-        
+
         $this->addFlash('message', 'commande créée avec succès');
         return $this->redirectToRoute('app_homepage');
-       
     }
 }

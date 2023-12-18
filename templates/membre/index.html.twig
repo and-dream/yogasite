@@ -1,47 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Membre index{% endblock %}
+{% block title %}Membre index
+{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1 class="text-center mt-4">Membre index</h1>
+	<div class="container">
+		<h1 class="text-center mt-4">Membre index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Mot de passe</th>
-                <th>Lastname</th>
-                <th>Firstname</th>
-                <th>Phone</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for membre in membres %}
-            <tr>
-                <td>{{ membre.id }}</td>
-                <td>{{ membre.email }}</td>
-                <td>{{ membre.roles ? membre.roles|json_encode : '' }}</td>
-                <td>{{ membre.password }}</td>
-                <td>{{ membre.lastname }}</td>
-                <td>{{ membre.firstname }}</td>
-                <td>{{ membre.phone }}</td>
-                <td>
-                    <a href="{{ path('app_membre_show', {'id': membre.id}) }}">afficher</a>
-                    <a href="{{ path('app_membre_edit', {'id': membre.id}) }}">modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
- 
-    <a href="{{ path('app_membre_new') }}">Créer un membre</a>
-   </div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Email</th>
+					<th>Roles</th>
+					<th>Mot de passe</th>
+					<th>Lastname</th>
+					<th>Firstname</th>
+					<th>Phone</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for membre in membres %}
+					<tr>
+						<td>{{ membre.id }}</td>
+						<td>{{ membre.email }}</td>
+						<td>{{ membre.roles ? membre.roles|json_encode : '' }}</td>
+						<td>{{ membre.password }}</td>
+						<td>{{ membre.lastname }}</td>
+						<td>{{ membre.firstname }}</td>
+						<td>{{ membre.phone }}</td>
+						<td>
+							<a href="{{ path('app_membre_show', {'id': membre.id}) }}">afficher</a>
+							<a href="{{ path('app_membre_edit', {'id': membre.id}) }}">modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_membre_new') }}">Créer un membre</a>
+	</div>
 {% endblock %}

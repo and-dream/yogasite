@@ -2,22 +2,21 @@
 
 {% block body %}
 
-<div class="container mt-5 text-center">
-    <div class="card bg-light mb-3">
-        <div class="card-header text-center">{{ retraite.name }}</div>      
-            <div>
-                <img class="img-fluid d-block mx-auto mt-3" src="{{ retraite.image }}" alt="" width="300">
-            </div>
-        <div class="card-body">
-                <p class="card-text text-center">{{retraite.description}}</p>
-                {% if retraite.stock > 0 %}
-                <a href="{{ path('cart_add', {id: retraite.id} )}}" class="btn btn-primary">Réserver</a>
-                {% else %}
-                <p class="text-danger">Il n'y a plus de places disponibles</p>
-                {% endif %}
-    </div>
-</div>
+	<div class="container mt-5 text-center">
+		<div class="card bg-light mb-3">
+			<div class="card-header text-center">{{ retraite.name }}</div>
+			<div>
+				<img class="img-fluid d-block mx-auto mt-3" src="{{ retraite.image }}" alt="" width="300">
+			</div>
+			<div class="card-body">
+				<p class="card-text text-center">{{retraite.description}}</p>
+				{% if retraite.stock > 0 %}
+					<a href="{{ path('cart_add', {id: retraite.id} )}}" class="btn btn-primary">Réserver</a>
+				{% else %}
+					<p class="text-danger">Il n'y a plus de places disponibles</p>
+				{% endif %}
+			</div>
+		</div>
 
 
-
-{% endblock %}
+	{% endblock %}

@@ -9,19 +9,19 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
- #[Route('/cart', name: 'cart_')]
+#[Route('/cart', name: 'cart_')]
 class CartController extends AbstractController
 {
-   #[Route('/', name: 'index')]
-   public function index(SessionInterface $session, RetraiteRepository $retraiteRepository)
-   {
+    #[Route('/', name: 'index')]
+    public function index(SessionInterface $session, RetraiteRepository $retraiteRepository)
+    {
         $panier = $session->get('panier', []);
-        
+
         //initialiser les variables
         $data = [];
         $total = 0;
 
-        foreach($panier as $id => $quantity){
+        foreach ($panier as $id => $quantity) {
             $retraite = $retraiteRepository->find($id);
 
             //on ajoute dans le data panier
@@ -34,8 +34,8 @@ class CartController extends AbstractController
             $total += $retraite->getPrice() * $quantity;
         }
         return $this->render('cart/index.html.twig', compact('data', 'total'));
-   }
-   
+    }
+
     #[Route('/add/{id}', name: 'add')]
     public function add(Retraite $retraite, SessionInterface $session)
     {
@@ -49,16 +49,15 @@ class CartController extends AbstractController
         //sinon on incrémente sa quantité
         //'empty' va renvoyer vrai si la variable n'existe pas
 
-        if(empty($panier[$id]))
-        {
+        if (empty($panier[$id])) {
             $panier[$id] = 1;
-        }else{
+        } else {
             $panier[$id]++;
         }
-        
+
         //je passe ma variable dans la session (sauvegarde dans la session)
         $session->set('panier', $panier);
-        
+
         //on redirige vers la page du panier
         return $this->redirectToRoute('cart_index');
     }
@@ -73,17 +72,15 @@ class CartController extends AbstractController
         //retirer le produit du panier s'il n'y a qu'un seul produit
         //sinon on décrémente sa quantité
         //là on vérifie si ce n'est PAS vide
-        if(!empty($panier[$id]))
-        {
-              if($panier[$id] > 1){
-            
+        if (!empty($panier[$id])) {
+            if ($panier[$id] > 1) {
+
                 $panier[$id]--;
-            }else{
+            } else {
                 unset($panier[$id]);
             }
-
         }
-        
+
         $session->set('panier', $panier);
         return $this->redirectToRoute('cart_index');
     }
@@ -91,15 +88,15 @@ class CartController extends AbstractController
     #[Route('/delete/{id}', name: 'delete')]
     public function delete(Retraite $retraite, SessionInterface $session)
     {
-        
+
         $id = $retraite->getId();
         $panier = $session->get('panier', []);
 
         // on vérifie si on n'a rien
-        if(!empty($panier[$id])){         
+        if (!empty($panier[$id])) {
             unset($panier[$id]);
         }
-        
+
         $session->set('panier', $panier);
         return $this->redirectToRoute('cart_index');
     }

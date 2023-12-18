@@ -19,19 +19,18 @@ class Commande
     #[ORM\JoinColumn(nullable: false)]
     private ?Membre $membre = null;
 
-    #[ORM\Column(length: 20 , unique: true)]
+    #[ORM\Column(length: 20, unique: true)]
     private ?string $reference = null;
 
     #[ORM\Column(options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\OneToMany(mappedBy: 'commandes', targetEntity: CommandeDetails::class, orphanRemoval: true, cascade:['persist'])]
+    #[ORM\OneToMany(mappedBy: 'commandes', targetEntity: CommandeDetails::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $commandeDetails;
 
     public function __construct()
     {
         $this->commandeDetails = new ArrayCollection();
-        
     }
 
 
@@ -74,7 +73,7 @@ class Commande
     public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
-      
+
         return $this;
     }
 

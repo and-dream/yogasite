@@ -21,11 +21,12 @@
 							<h6 class="card-subtitle text-muted">{{ retrait.Duree }}</h6>
 						</div>
 
-						<div class="card-body">
+						<div class="card-body text-center">
 
-							<img src="{{ asset('img/upload') ~ retrait.image }}" alt="Image de {{ retrait.name }}">
+							<img src="{{ asset('img/upload/' ~ retrait.image) }}" alt="Image de {{ retrait.name }}">
 
-							<p class="card-text">{{ retrait.description }}</p>
+
+							<p class="card-text mt-4">{{ retrait.description }}</p>
 						</div>
 
 						<div class="card-footer text-muted">
