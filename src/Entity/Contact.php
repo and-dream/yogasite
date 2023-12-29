@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ContactRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
@@ -14,18 +15,43 @@ class Contact
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Veuillez entrer votre nom")]
+    #[Assert\Length(
+        min: 2,
+        max: 32,
+        minMessage: 'Votre nom doit comporter {{ limit }} caractères minimum',
+        maxMessage: 'Votre nom ne peut pas dépasser {{ limit }} caractères',
+    )]
+    #[ORM\Column(length: 32)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Veuillez entrer votre prénom")]
+    #[Assert\Length(
+        min: 2,
+        max: 32,
+        minMessage: 'Votre prénom doit comporter {{ limit }} caractères minimum',
+        maxMessage: 'Votre prénom ne peut pas dépasser {{ limit }} caractères',
+    )]
+    #[ORM\Column(length: 32)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Veuillez entrer une adresse email")]
+    #[Assert\Email(
+        message: 'Cet email {{ value }} a un format incorrect.',
+    )]
+    #[ORM\Column(length: 32)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Veuillez entrer un numéro de téléphone")]
+    #[ORM\Column(length: 20)]
     private ?string $telephone = null;
 
+    #[Assert\NotBlank(message: "Veuillez laisser un message")]
+    #[Assert\Regex(
+        pattern: '/^\w+/',
+        match: true,
+        message: 'Votre message doit contenir un texte valide',
+    )]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 

@@ -75,11 +75,19 @@ class HomeController extends AbstractController
     }
 
     #[Route('/contact', name: 'app_contact')]
-    public function contact(Request $request): Response
+    public function contact(Request $request, EntityManagerInterface $manager): Response
     {
         $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($form);
+            $manager->flush();
+        }
+
         return $this->render('home/contact.html.twig', [
             'formContact' => $form
         ]);
     }
 }
+

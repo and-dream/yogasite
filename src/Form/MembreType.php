@@ -12,12 +12,22 @@ class MembreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('roles')
-            ->add('password')
-            ->add('lastname')
-            ->add('firstname')
-            ->add('phone');
+            ->add('email', options: [
+                'label' => 'Email'
+            ])
+            // ->add('roles')
+            ->add('password', options: [
+                'label' => 'Mot de passe'
+            ])
+            ->add('lastname', options: [
+                'label' => 'Nom'
+            ])
+            ->add('firstname', options: [
+                'label' => 'Prénom'
+            ])
+            ->add('phone', options: [
+                'label' => 'Téléphone'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

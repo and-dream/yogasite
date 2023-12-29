@@ -4,19 +4,21 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container mt-4">
-		<div class="card border-0 shadow my-5">
+	<div class=" form-control container mt-4">
 			<div class="card-body p-5">
 				<h1 class="fw-light">Nous contacter</h1>
 				<p class="lead">Nous prendrons soin de vous répondre dans les meilleurs délais</p>
-				<p class="lead mb-0"></p>
-				<div class="container mt-5">
-					{{ form(formContact)}}
-						<button type="submit" class="btn btn-secondary">Envoyer</button>
-					</div>
-				</div>
+
+				{{ form_start(formContact, {
+					attr: {novalidate: "novalidate"}
+				}) }}
+
+				{{form_widget(formContact)}}
+				
+				{{ form_end(formContact) }}
+
 			</div>
-		</div>
+	</div>
 
 
-	{% endblock %}
+{% endblock %}
